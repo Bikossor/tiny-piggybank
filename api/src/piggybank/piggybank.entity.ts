@@ -10,4 +10,7 @@ export class Piggybank extends BaseEntity {
 
   @ManyToOne()
   owner: User;
+
+  @Property()
+  balance: number;
 }
