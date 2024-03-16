@@ -10,4 +10,9 @@ export class User extends BaseEntity {
 
   @OneToMany('Piggybank', 'owner')
   piggybanks = new Collection<Piggybank>(this);
+
+  constructor(name: string) {
+    super();
+    this.name = name;
+  }
 }
