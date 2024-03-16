@@ -4,13 +4,7 @@ import { AppService } from './app.service';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 @Module({
-  imports: [
-    MikroOrmModule.forRoot({
-      entities: ['./dist/entities'],
-      entitiesTs: ['./src/entities'],
-      dbName: 'tiny-piggybank.sqlite3',
-    }),
-  ],
+  imports: [MikroOrmModule.forRoot()],
   controllers: [AppController],
   providers: [AppService],
 })
