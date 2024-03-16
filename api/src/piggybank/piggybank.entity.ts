@@ -1,12 +1,9 @@
-import { v4 as createV4 } from 'uuid';
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, Property } from '@mikro-orm/core';
+import { BaseEntity } from 'src/base/base.entity';
 import { PiggybankRepository } from './piggybank.repository';
 
 @Entity({ repository: () => PiggybankRepository })
-export class Piggybank {
-  @PrimaryKey({ type: 'uuid' })
-  id = createV4();
-
+export class Piggybank extends BaseEntity {
   @Property()
   name: string;
 }
