@@ -26,6 +26,10 @@ export class UserService {
     return this.userRepository.findAll();
   }
 
+  async getUser(id: string): Promise<User> {
+    return this.userRepository.findOneOrFail({ id });
+  }
+
   async create(dto: CreateUserDto): Promise<IUserRO> {
     const { name } = dto;
     // check uniqueness of name
