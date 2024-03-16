@@ -1,4 +1,4 @@
-import { Entity, OneToMany, Property } from '@mikro-orm/core';
+import { Collection, Entity, OneToMany, Property } from '@mikro-orm/core';
 import { BaseEntity } from 'src/base/base.entity';
 import { UserRepository } from './user.repository';
 import { Piggybank } from 'src/piggybank/piggybank.entity';
@@ -9,5 +9,5 @@ export class User extends BaseEntity {
   name: string;
 
   @OneToMany('Piggybank', 'owner')
-  piggybanks = new Set<Piggybank>();
+  piggybanks = new Collection<Piggybank>(this);
 }
