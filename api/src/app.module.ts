@@ -8,7 +8,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
     MikroOrmModule.forRoot({
       entities: ['./dist/entities'],
       entitiesTs: ['./src/entities'],
-      dbName: 'my-db-name.sqlite3',
+      dbName: 'tiny-piggybank.sqlite3',
     }),
   ],
   controllers: [AppController],
