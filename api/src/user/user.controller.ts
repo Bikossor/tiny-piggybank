@@ -7,9 +7,9 @@ import { CreateUserDto } from './dto/CreateUserDto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('user')
-  async getUser(): Promise<User[]> {
-    return this.userService.getUser();
+  @Get('users')
+  async getUsers(): Promise<User[]> {
+    return this.userService.getUsers();
   }
 
   @Post('user')
