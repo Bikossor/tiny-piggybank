@@ -8,6 +8,9 @@ export class User extends BaseEntity {
   @Property()
   name: string;
 
+  @Property()
+  password: string;
+
   @OneToMany('Piggybank', 'owner')
   piggybanks = new Collection<Piggybank>(this);
 
