@@ -30,6 +30,10 @@ export class UserService {
     return this.userRepository.findOneOrFail({ id });
   }
 
+  async findByName(name: string): Promise<User> {
+    return this.userRepository.findOneOrFail({ name });
+  }
+
   async create(dto: CreateUserDto): Promise<IUserRO> {
     const { name } = dto;
     // check uniqueness of name
