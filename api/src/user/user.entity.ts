@@ -14,8 +14,9 @@ export class User extends BaseEntity {
   @OneToMany('Piggybank', 'owner')
   piggybanks = new Collection<Piggybank>(this);
 
-  constructor(name: string) {
+  constructor(name: string, password: string) {
     super();
     this.name = name;
+    this.password = password;
   }
 }

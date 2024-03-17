@@ -4,6 +4,7 @@ import { User } from './user.entity';
 import { UserRepository } from './user.repository';
 import { CreateUserDto } from './dto/CreateUserDto';
 import { IUserRO } from './user.interface';
+import { hash as hashArgon2 } from 'argon2';
 
 @Injectable()
 export class UserService {
@@ -35,7 +36,7 @@ export class UserService {
   }
 
   async create(dto: CreateUserDto): Promise<IUserRO> {
-    const { name } = dto;
+    const { name, password } = dto;
     // check uniqueness of name
     const exists = await this.userRepository.count({
       $or: [{ name }],
@@ -51,8 +52,10 @@ export class UserService {
       );
     }
 
+    const hashedPassword = await hashArgon2(password);
+
     // create new user
-    const user = new User(name);
+    const user = new User(name, hashedPassword);
 
     await this.em.persistAndFlush(user);
     return this.buildUserRO(user);
