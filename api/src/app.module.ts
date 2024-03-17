@@ -10,9 +10,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { PiggybankModule } from './piggybank/piggybank.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [MikroOrmModule.forRoot(), PiggybankModule, UserModule],
+  imports: [MikroOrmModule.forRoot(), PiggybankModule, UserModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
