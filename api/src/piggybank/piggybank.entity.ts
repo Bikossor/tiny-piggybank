@@ -13,4 +13,11 @@ export class Piggybank extends BaseEntity {
 
   @Property()
   balance: number;
+
+  constructor(name: string, owner: User) {
+    super();
+    this.name = name;
+    this.owner = owner;
+    this.balance = 0;
+  }
 }
