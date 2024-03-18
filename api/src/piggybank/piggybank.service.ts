@@ -17,7 +17,7 @@ export class PiggybankService {
   }
 
   async createPiggybank(name: string, userId: string): Promise<string> {
-    const user = await this.userService.getUser(userId);
+    const user = await this.userService.findById(userId);
     const piggybank = new Piggybank(name, user);
 
     this.em.persist(piggybank);
