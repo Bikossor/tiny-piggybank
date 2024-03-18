@@ -18,7 +18,7 @@ export class PiggybankController {
   constructor(private readonly piggybankService: PiggybankService) {}
 
   @UseGuards(AuthGuard)
-  @Get('piggybank')
+  @Get('piggybanks')
   async getPiggybanks(@Request() request): Promise<Piggybank[]> {
     return this.piggybankService.getPiggybanksFromUser(request.user.sub);
   }
