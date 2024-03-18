@@ -23,10 +23,6 @@ export class UserService {
     return userRO;
   }
 
-  async getUsers(): Promise<User[]> {
-    return this.userRepository.findAll();
-  }
-
   async getUser(id: string): Promise<User> {
     return this.userRepository.findOneOrFail({ id });
   }

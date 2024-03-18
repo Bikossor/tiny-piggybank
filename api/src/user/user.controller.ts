@@ -9,11 +9,6 @@ import { ApiTags } from '@nestjs/swagger';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('users')
-  async getUsers(): Promise<User[]> {
-    return this.userService.getUsers();
-  }
-
   @Get('user/:id')
   async getUser(@Param() params: { id: string }): Promise<User> {
     return this.userService.getUser(params.id);
