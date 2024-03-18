@@ -10,7 +10,9 @@ import { PiggybankService } from './piggybank.service';
 import { Piggybank } from './piggybank.entity';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { CreatePiggybankDto } from './dto/CreatePiggybankDto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('piggybank')
 @Controller()
 export class PiggybankController {
   constructor(private readonly piggybankService: PiggybankService) {}
