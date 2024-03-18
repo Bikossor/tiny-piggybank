@@ -12,8 +12,8 @@ export class PiggybankService {
     private readonly em: EntityManager,
   ) {}
 
-  async getPiggybank(): Promise<Piggybank[]> {
-    return this.piggybankRepository.findAll();
+  async getPiggybanksFromUser(userId: string): Promise<Piggybank[]> {
+    return this.em.findAll(Piggybank, { where: { owner: userId } });
   }
 
   async createPiggybank(name: string, userId: string): Promise<string> {
