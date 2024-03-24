@@ -13,7 +13,7 @@ import { CreatePiggybankDto } from './dto/CreatePiggybankDto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('piggybank')
-@Controller()
+@Controller('piggybank')
 export class PiggybankController {
   constructor(private readonly piggybankService: PiggybankService) {}
 
@@ -21,7 +21,7 @@ export class PiggybankController {
   @ApiOperation({
     summary: 'Get all piggybanks of a user',
   })
-  @Get('piggybank')
+  @Get()
   async getPiggybanks(@Request() request): Promise<Piggybank[]> {
     return this.piggybankService.getPiggybanksFromUser(request.user.sub);
   }
@@ -30,7 +30,7 @@ export class PiggybankController {
   @ApiOperation({
     summary: 'Create a piggybank for a user',
   })
-  @Post('piggybank')
+  @Post()
   async createPiggybank(
     @Request() request,
     @Body('piggybank') piggybankData: CreatePiggybankDto,
