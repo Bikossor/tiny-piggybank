@@ -5,14 +5,14 @@ import { CreateUserDto } from './dto/CreateUserDto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('user')
-@Controller()
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @ApiOperation({
     summary: 'Get a user by id',
   })
-  @Get('user/:id')
+  @Get(':id')
   async getUser(@Param() params: { id: string }): Promise<User> {
     return this.userService.findById(params.id);
   }
@@ -20,7 +20,7 @@ export class UserController {
   @ApiOperation({
     summary: 'Create a user',
   })
-  @Post('user')
+  @Post()
   async create(@Body('user') userData: CreateUserDto) {
     return this.userService.create(userData);
   }
