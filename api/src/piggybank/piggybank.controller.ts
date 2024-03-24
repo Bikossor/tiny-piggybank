@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Post,
   Request,
@@ -48,5 +49,14 @@ export class PiggybankController {
       piggybankData.name,
       request.user.sub,
     );
+  }
+
+  @UseGuards(AuthGuard)
+  @ApiOperation({
+    summary: 'Delete a piggybank by id',
+  })
+  @Delete(':id')
+  async deletePiggybank(id: string) {
+    return this.piggybankService.deletePiggybank(id);
   }
 }

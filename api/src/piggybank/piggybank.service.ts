@@ -30,4 +30,10 @@ export class PiggybankService {
 
     return 'Piggybank created';
   }
+
+  async deletePiggybank(id: string) {
+    const piggybank = await this.getPiggybankById(id);
+
+    await this.em.removeAndFlush(piggybank);
+  }
 }
