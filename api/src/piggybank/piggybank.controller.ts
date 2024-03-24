@@ -21,7 +21,7 @@ export class PiggybankController {
   @ApiOperation({
     summary: 'Get all piggybanks of a user',
   })
-  @Get('piggybanks')
+  @Get('piggybank')
   async getPiggybanks(@Request() request): Promise<Piggybank[]> {
     return this.piggybankService.getPiggybanksFromUser(request.user.sub);
   }
