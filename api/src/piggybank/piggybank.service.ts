@@ -16,6 +16,10 @@ export class PiggybankService {
     return this.em.findAll(Piggybank, { where: { owner: userId } });
   }
 
+  async getPiggybankById(id: string): Promise<Piggybank> {
+    return this.em.findOneOrFail(Piggybank, { id });
+  }
+
   async createPiggybank(name: string, userId: string): Promise<string> {
     const user = await this.userService.findById(userId);
     const piggybank = new Piggybank(name, user);

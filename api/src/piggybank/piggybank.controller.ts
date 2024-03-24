@@ -28,6 +28,15 @@ export class PiggybankController {
 
   @UseGuards(AuthGuard)
   @ApiOperation({
+    summary: 'Get a piggybank by id',
+  })
+  @Get(':id')
+  async getPiggybankById(id: string): Promise<Piggybank> {
+    return this.piggybankService.getPiggybankById(id);
+  }
+
+  @UseGuards(AuthGuard)
+  @ApiOperation({
     summary: 'Create a piggybank for a user',
   })
   @Post()
